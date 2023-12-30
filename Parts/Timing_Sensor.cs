@@ -17,14 +17,14 @@ class Timing_Sensor : Part
             "Fixed",
             AttachmentTypeFlags.Fixed,
             AlignmentFlags.UNUSED,
-            new Vector3(0f, 0f, 0f),
+            new Vector3(0f, -0.05f, 0f),
             new Vector3(180f, 0f, 0f)
         );
         AddAttachmentPoint(
             "CrankSensor",
             AttachmentTypeFlags.RotaryBearing,
             AlignmentFlags.IsBidirectional | AlignmentFlags.IsInterior | AlignmentFlags.IsFemale,
-            new Vector3(0f, 0.05f, 0f),
+            new Vector3(0f, 0f, 0f),
             new Vector3(180f, 0f, 0f)
         );
 
