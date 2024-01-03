@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>CombustionMotors</AssemblyName>
     <Description>Brings combustion engines to GearBlocks!</Description>
-    <Version>0.1.2</Version>
+    <Version>0.2</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RestoreAdditionalProjectSources>
