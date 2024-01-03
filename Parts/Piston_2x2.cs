@@ -1,3 +1,4 @@
+using CombustionMotors.Parts.Behaviours;
 using GearLib.Parts;
 using SmashHammer.GearBlocks.Construction;
 using UnityEngine;
@@ -28,5 +29,6 @@ class Piston_2x2 : Part
         );
 
         AddLinkPoint("TimingSensor", "Combustion", Vector3.zero, false);
+        AddBehaviour<PistonBehaviour_2x2>();
     }
 }
