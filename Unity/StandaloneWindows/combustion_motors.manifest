@@ -1,0 +1,71 @@
+ManifestFileVersion: 0
+CRC: 1315038947
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b514e011e655ccc24d3e2c207ab14874
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: bb3f49cbf9ab82d37cd7fae230ed5d11
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Parts/Interactables/timing_sensor.fbx
+- Assets/Parts/Decorations/cone_intake.fbx
+- Assets/Parts/Modular/88mm_head.fbx
+- Assets/Parts/Decorations/kabooma_hood_statue.fbx
+- Assets/Parts/Modular/medium_block.fbx
+- Assets/Parts/Interactables/ECU.fbx
+- Assets/Parts/Modular/66mm_conrod.fbx
+- Assets/Parts/Decorations/gas_tank.fbx
+- Assets/Parts/CC97/97cc_fly_wheel_inner.fbx
+- Assets/Parts/Modular/96mm_cylinder.fbx
+- Assets/Parts/CC97/97cc_con_rod_needs_update_later.fbx
+- Assets/Parts/Modular/small_block.fbx
+- Assets/Parts/Modular/80mm_cylinder.fbx
+- Assets/Parts/Decorations/silverthorn_hood_statue.fbx
+- Assets/Parts/CC97/97cc_piston.fbx
+- Assets/Parts/External/2x2_piston_head.fbx
+- Assets/Parts/CC97/97cc_crank_case.fbx
+- Assets/Parts/Modular/40mm_conrod.fbx
+- Assets/Parts/CC97/97cc_fly_wheel_outer.fbx
+- Assets/Parts/CC185/185cc_crank_case.fbx
+- Assets/Parts/Modular/110mm_conrod.fbx
+- Assets/Parts/External/1x1_piston_head.fbx
+- Assets/Parts/Modular/60mm_crankshaft.fbx
+- Assets/Parts/Modular/88mm_cylinder.fbx
+- Assets/Parts/Modular/96mm_piston.fbx
+- Assets/Parts/Interactables/throttle_lever.fbx
+- Assets/Parts/Interactables/throttle_body.fbx
+- Assets/Parts/Modular/100mm_crankshaft.fbx
+- Assets/Parts/Modular/large_block.fbx
+- Assets/Parts/Modular/64mm_piston.fbx
+- Assets/Parts/CC97/97cc_crank.fbx
+- Assets/Parts/Modular/small_fly_wheel_inner.fbx
+- Assets/Parts/Modular/small_fly_wheel_outer.fbx
+- Assets/Parts/Modular/90mm_conrod.fbx
+- Assets/Parts/Modular/96mm_head.fbx
+- Assets/Parts/Modular/80mm_piston.fbx
+- Assets/Parts/Modular/80mm_head.fbx
+- Assets/Parts/Modular/50mm_crankshaft.fbx
+- Assets/Parts/Modular/80mm_crankshaft.fbx
+- Assets/Parts/Modular/88mm_piston.fbx
+- Assets/Parts/Decorations/scoop_intake.fbx
+Dependencies: []

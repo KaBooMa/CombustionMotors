@@ -1,10 +1,7 @@
 ManifestFileVersion: 0
-CRC: 3785290394
+CRC: 777538680
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: combustion_motors
-      Dependencies: {}
-    Info_1:
-      Name: angled_parts
       Dependencies: {}
