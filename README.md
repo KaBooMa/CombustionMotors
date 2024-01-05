@@ -7,3 +7,6 @@ This is a GearBlocks mod that aims to add combustion parts into the game. Piston
 GearLib documentation here: https://github.com/KaBooMa/GearLib
 
 Simply download the latest release and extract the CombustionMotors folder into your BepInEx/plugins folder.
+
+## Credits
+All models are maintained by SilverThorn (Thank you Silver ❤️!)
