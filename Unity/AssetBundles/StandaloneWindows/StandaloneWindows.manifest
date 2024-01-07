@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 48251030
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: combustion_motors
+      Dependencies: {}
