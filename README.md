@@ -9,5 +9,5 @@ GearLib documentation here: https://github.com/KaBooMa/GearLib
 Simply download the latest release and extract the CombustionMotors folder into your BepInEx/plugins folder.
 
 ## Credits
-All models are maintained by SilverThorn (Thank you Silver ❤️!)
+All models are maintained by SilverThorn (Thank you Silver ❤️!)\
 Big thank you to Thebutheads, Pyro and MATT in the Discord for help getting the calculations dialed in for realism!!
