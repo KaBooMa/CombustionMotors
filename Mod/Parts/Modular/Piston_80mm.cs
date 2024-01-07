@@ -9,7 +9,7 @@ namespace CombustionMotors.Parts.Modular;
 
 class Piston_80mm : Part
 {
-    public Piston_80mm() : base("CombustionMotors/assets/combustion_motors", "80mm_piston", 302098959637532, "80mm Piston", "Props", 0.7f)
+    public Piston_80mm() : base("CombustionMotors/assets/combustion_motors", "80mm_piston", 302098959637532, "80mm Piston", "Props", 0.7f, true)
     {
         AddAttachmentPoint(
             "Conrod",

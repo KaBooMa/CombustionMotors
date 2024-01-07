@@ -8,7 +8,7 @@ namespace CombustionMotors.Parts.Modular;
 
 class Cylinder_96mm : Part
 {
-    public Cylinder_96mm() : base("CombustionMotors/assets/combustion_motors", "96mm_cylinder", 758623823686919, "96mm Cylinder", "Props", 7f)
+    public Cylinder_96mm() : base("CombustionMotors/assets/combustion_motors", "96mm_cylinder", 758623823686919, "96mm Cylinder", "Props", 7f, true)
     {
         AddAttachmentPoint(
             "Block",

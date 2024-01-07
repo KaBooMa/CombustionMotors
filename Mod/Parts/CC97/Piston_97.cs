@@ -9,7 +9,7 @@ namespace CombustionMotors.Parts.CC97;
 
 class Piston_97 : Part
 {
-    public Piston_97() : base("CombustionMotors/assets/combustion_motors", "97cc_piston", 327319398071663, "97cc Piston", "Props", 0.5f)
+    public Piston_97() : base("CombustionMotors/assets/combustion_motors", "97cc_piston", 327319398071663, "97cc Piston", "Props", 0.5f, true)
     {
         AddAttachmentPoint(
             "RotaryBearing",

@@ -7,7 +7,7 @@ namespace CombustionMotors.Parts.Decorations;
 
 class Bomb_Ornament : Part
 {
-    public Bomb_Ornament() : base("CombustionMotors/assets/combustion_motors", "kabooma_hood_statue", 48193572300, "Bomb Ornament", "Props", 0.5f)
+    public Bomb_Ornament() : base("CombustionMotors/assets/combustion_motors", "kabooma_hood_statue", 48193572300, "Bomb Ornament", "Props", 0.5f, true)
     {
         AddAttachmentPoint(
             "Fixed",

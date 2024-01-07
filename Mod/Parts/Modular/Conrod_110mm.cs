@@ -8,7 +8,7 @@ namespace CombustionMotors.Parts.Modular;
 
 class Conrod_110mm : Part
 {
-    public Conrod_110mm() : base("CombustionMotors/assets/combustion_motors", "110mm_conrod", 705323852636055, "110mm Conrod", "Props", 0.06f)
+    public Conrod_110mm() : base("CombustionMotors/assets/combustion_motors", "110mm_conrod", 705323852636055, "110mm Conrod", "Props", 0.06f, true)
     {
         AddAttachmentPoint(
             "BottomHole",

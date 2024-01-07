@@ -8,7 +8,7 @@ namespace CombustionMotors.Parts.CC97;
 
 class Crankshaft_97 : Part
 {
-    public Crankshaft_97() : base("CombustionMotors/assets/combustion_motors", "97cc_crank", 219983538408576, "97cc Crankshaft", "Props", 1.9f)
+    public Crankshaft_97() : base("CombustionMotors/assets/combustion_motors", "97cc_crank", 219983538408576, "97cc Crankshaft", "Props", 1.9f, true)
     {
         AddAttachmentPoint(
             "ConrodBearing",

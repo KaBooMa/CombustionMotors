@@ -8,7 +8,7 @@ namespace CombustionMotors.Parts.Modular;
 
 class Conrod_90mm : Part
 {
-    public Conrod_90mm() : base("CombustionMotors/assets/combustion_motors", "90mm_conrod", 148324898296651, "90mm Conrod", "Props", 0.5f)
+    public Conrod_90mm() : base("CombustionMotors/assets/combustion_motors", "90mm_conrod", 148324898296651, "90mm Conrod", "Props", 0.5f, true)
     {
         AddAttachmentPoint(
             "BottomHole",

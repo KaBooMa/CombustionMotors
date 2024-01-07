@@ -10,7 +10,7 @@ namespace CombustionMotors.Parts.Modular;
 
 class Crankshaft_50mm : Part
 {
-    public Crankshaft_50mm() : base("CombustionMotors/assets/combustion_motors", "50mm_crankshaft", 165626881429710, "50mm Crankshaft", "Props", 1.5f)
+    public Crankshaft_50mm() : base("CombustionMotors/assets/combustion_motors", "50mm_crankshaft", 165626881429710, "50mm Crankshaft", "Props", 1.5f, true)
     {
         AddAttachmentPoint(
             "RotaryBearingCenter",

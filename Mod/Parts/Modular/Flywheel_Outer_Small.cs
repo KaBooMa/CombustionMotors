@@ -8,7 +8,7 @@ namespace CombustionMotors.Parts.Modular;
 
 class Flywheel_Outer_Small : Part
 {
-    public Flywheel_Outer_Small() : base("CombustionMotors/assets/combustion_motors", "small_fly_wheel_outer", 108984571301545, "Small Outer Flywheel", "Props", 7f)
+    public Flywheel_Outer_Small() : base("CombustionMotors/assets/combustion_motors", "small_fly_wheel_outer", 108984571301545, "Small Outer Flywheel", "Props", 7f, true)
     {
         AddAttachmentPoint(
             "Fixed",

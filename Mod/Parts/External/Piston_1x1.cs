@@ -10,7 +10,7 @@ namespace CombustionMotors.Parts.External;
 
 class Piston_1x1 : Part
 {
-    public Piston_1x1() : base("CombustionMotors/assets/combustion_motors", "1x1_piston_head", 65399976013, "1x1 Piston Head", "Props", 3.5f)
+    public Piston_1x1() : base("CombustionMotors/assets/combustion_motors", "1x1_piston_head", 65399976013, "1x1 Piston Head", "Props", 3.5f, true)
     {
         SliderRailBehaviour slider = game_object.AddComponent<SliderRailBehaviour>();
         slider.slidingAxis = Axis.Y_Axis;

@@ -9,7 +9,7 @@ namespace CombustionMotors.Parts.Modular;
 
 class Block_Large : Part
 {
-    public Block_Large() : base("CombustionMotors/assets/combustion_motors", "large_block", 920375671938121, "Large Engine Block", "Props", 15f)
+    public Block_Large() : base("CombustionMotors/assets/combustion_motors", "large_block", 920375671938121, "Large Engine Block", "Props", 15f, true)
     {
         AddAttachmentPoint(
             "FixedBottom",
@@ -40,7 +40,7 @@ class Block_Large : Part
             Vector3Int.one
         );
         
-        AddLinkPoint("ECU", "Electronics", new Vector3(-0.1f, 0f, 0), can_send: false);
+        AddLinkPoint("ECU", "Electronics", Vector3.zero, can_send: false);
         AddBehaviour<DisableCollisonBehaviour>();
         AddBehaviour<CrankCase97Behaviour>();
         AddBehaviour<BlockBehaviour>();

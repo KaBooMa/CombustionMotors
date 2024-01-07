@@ -10,7 +10,7 @@ namespace CombustionMotors.Parts.Modular;
 
 class Crankshaft_80mm : Part
 {
-    public Crankshaft_80mm() : base("CombustionMotors/assets/combustion_motors", "80mm_crankshaft", 635090444362099, "80mm Crankshaft", "Props", 2.5f)
+    public Crankshaft_80mm() : base("CombustionMotors/assets/combustion_motors", "80mm_crankshaft", 635090444362099, "80mm Crankshaft", "Props", 2.5f, true)
     {
         AddAttachmentPoint(
             "RotaryBearingCenter",

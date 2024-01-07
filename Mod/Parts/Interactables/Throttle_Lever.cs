@@ -7,7 +7,7 @@ namespace CombustionMotors.Parts.Interactables;
 
 class Throttle_Lever : Part
 {
-    public Throttle_Lever() : base("CombustionMotors/assets/combustion_motors", "throttle_lever", 16937262745, "Throttle Lever", "Props", 5f)
+    public Throttle_Lever() : base("CombustionMotors/assets/combustion_motors", "throttle_lever", 16937262745, "Throttle Lever", "Props", 5f, true)
     {
         AddAttachmentPoint(
             "KnuckleInner",

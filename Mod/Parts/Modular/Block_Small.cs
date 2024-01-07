@@ -9,7 +9,7 @@ namespace CombustionMotors.Parts.Modular;
 
 class Block_Small : Part
 {
-    public Block_Small() : base("CombustionMotors/assets/combustion_motors", "small_block", 940625062889631, "Small Engine Block", "Props", 10f)
+    public Block_Small() : base("CombustionMotors/assets/combustion_motors", "small_block", 940625062889631, "Small Engine Block", "Props", 10f, true)
     {
         AddAttachmentPoint(
             "FixedBottom",
@@ -40,7 +40,7 @@ class Block_Small : Part
             Vector3Int.one
         );
         
-        AddLinkPoint("ECU", "Electronics", new Vector3(-0.1f, 0f, 0), can_send: false);
+        AddLinkPoint("ECU", "Electronics", Vector3.zero, can_send: false);
         AddBehaviour<DisableCollisonBehaviour>();
         AddBehaviour<CrankCase97Behaviour>();
         AddBehaviour<BlockBehaviour>();

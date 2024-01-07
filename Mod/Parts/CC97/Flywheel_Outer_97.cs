@@ -8,7 +8,7 @@ namespace CombustionMotors.Parts.CC97;
 
 class Flywheel_Outer_97 : Part
 {
-    public Flywheel_Outer_97() : base("CombustionMotors/assets/combustion_motors", "97cc_fly_wheel_outer", 142613346413259, "97cc Flywheel Outer Ring", "Props", 0.2f)
+    public Flywheel_Outer_97() : base("CombustionMotors/assets/combustion_motors", "97cc_fly_wheel_outer", 142613346413259, "97cc Flywheel Outer Ring", "Props", 0.2f, true)
     {
         AddAttachmentPoint(
             "Fixed",

@@ -8,7 +8,7 @@ namespace CombustionMotors.Parts.CC97;
 
 class Conrod_97 : Part
 {
-    public Conrod_97() : base("CombustionMotors/assets/combustion_motors", "97cc_con_rod_needs_update_later", 563615686537867, "97cc Conrod", "Props", 0.17f)
+    public Conrod_97() : base("CombustionMotors/assets/combustion_motors", "97cc_con_rod_needs_update_later", 563615686537867, "97cc Conrod", "Props", 0.17f, true)
     {
         AddAttachmentPoint(
             "RotaryBearingOne",

@@ -10,7 +10,7 @@
 
 // class Head_88mm : Part
 // {
-//     public Head_88mm() : base("CombustionMotors/assets/combustion_motors", "88mm_head", 285928039610619, "88mm Head", "Props", 0.8f)
+//     public Head_88mm() : base("CombustionMotors/assets/combustion_motors", "88mm_head", 285928039610619, "88mm Head", "Props", 0.8f, true)
 //     {
 //         AddAttachmentPoint(
 //             "Cylinder",

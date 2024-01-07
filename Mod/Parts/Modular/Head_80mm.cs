@@ -10,7 +10,7 @@
 
 // class Head_80mm : Part
 // {
-//     public Head_80mm() : base("CombustionMotors/assets/combustion_motors", "80mm_head", 921085339905657, "80mm Head", "Props", 0.8f)
+//     public Head_80mm() : base("CombustionMotors/assets/combustion_motors", "80mm_head", 921085339905657, "80mm Head", "Props", 0.8f, true)
 //     {
 //         AddAttachmentPoint(
 //             "Cylinder",

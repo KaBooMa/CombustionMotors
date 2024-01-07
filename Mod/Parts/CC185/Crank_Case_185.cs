@@ -8,7 +8,7 @@ namespace CombustionMotors.Parts.CC97;
 
 class Crank_Case_185 : Part
 {
-    public Crank_Case_185() : base("CombustionMotors/assets/combustion_motors", "185cc_crank_case", 494429698958452, "185cc Crank Case", "Props", 20f)
+    public Crank_Case_185() : base("CombustionMotors/assets/combustion_motors", "185cc_crank_case", 494429698958452, "185cc Crank Case", "Props", 20f, true)
     {
         AddAttachmentPoint(
             "FixedSlider",

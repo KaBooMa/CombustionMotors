@@ -7,7 +7,7 @@ namespace CombustionMotors.Parts.Decorations;
 
 class Cone_Intake : Part
 {
-    public Cone_Intake() : base("CombustionMotors/assets/combustion_motors", "cone_intake", 19850179660, "Air Filter", "Props", 0.1f)
+    public Cone_Intake() : base("CombustionMotors/assets/combustion_motors", "cone_intake", 19850179660, "Air Filter", "Props", 0.1f, true)
     {
         AddAttachmentPoint(
             "Fixed",

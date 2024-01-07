@@ -7,7 +7,7 @@ namespace CombustionMotors.Parts.Decorations;
 
 class Gas_Tank : Part
 {
-    public Gas_Tank() : base("CombustionMotors/assets/combustion_motors", "gas_tank", 85981766481, "Gas Tank", "Props", 25f)
+    public Gas_Tank() : base("CombustionMotors/assets/combustion_motors", "gas_tank", 85981766481, "Gas Tank", "Props", 25f, true)
     {
         AddAttachmentPoint(
             "BackRight",

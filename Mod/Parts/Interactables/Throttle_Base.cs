@@ -7,7 +7,7 @@ namespace CombustionMotors.Parts.Interactables;
 
 class Throttle_Base : Part
 {
-    public Throttle_Base() : base("CombustionMotors/assets/combustion_motors", "throttle_body", 62720565116, "Throttle Base", "Props", 1f)
+    public Throttle_Base() : base("CombustionMotors/assets/combustion_motors", "throttle_body", 62720565116, "Throttle Base", "Props", 1f, true)
     {
         AddAttachmentPoint(
             "Fixed",

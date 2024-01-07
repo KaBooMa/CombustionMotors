@@ -7,7 +7,7 @@ namespace CombustionMotors.Parts.Decorations;
 
 class Thorn_Ornament : Part
 {
-    public Thorn_Ornament() : base("CombustionMotors/assets/combustion_motors", "silverthorn_hood_statue", 68540139294, "Thorn Ornament", "Props", 0.5f)
+    public Thorn_Ornament() : base("CombustionMotors/assets/combustion_motors", "silverthorn_hood_statue", 68540139294, "Thorn Ornament", "Props", 0.5f, true)
     {
         AddAttachmentPoint(
             "Fixed",

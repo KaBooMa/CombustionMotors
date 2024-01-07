@@ -8,7 +8,7 @@ namespace CombustionMotors.Parts.Interactables;
 
 class ECU : Part
 {
-    public ECU() : base("CombustionMotors/assets/combustion_motors", "ecu", 412621540480970, "ECU", "Electronics", 0.1f)
+    public ECU() : base("CombustionMotors/assets/combustion_motors", "ecu", 412621540480970, "ECU", "Electronics", 0.1f, true)
     {
         AddAttachmentPoint(
             "Fixed",

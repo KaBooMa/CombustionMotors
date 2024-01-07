@@ -8,7 +8,7 @@ namespace CombustionMotors.Parts.CC97;
 
 class Flywheel_Inner_97 : Part
 {
-    public Flywheel_Inner_97() : base("CombustionMotors/assets/combustion_motors", "97cc_fly_wheel_inner", 834413015189922, "97cc Flywheel Inner Ring", "Props", 0.1f)
+    public Flywheel_Inner_97() : base("CombustionMotors/assets/combustion_motors", "97cc_fly_wheel_inner", 834413015189922, "97cc Flywheel Inner Ring", "Props", 0.1f, true)
     {
         AddAttachmentPoint(
             "FixedOne",

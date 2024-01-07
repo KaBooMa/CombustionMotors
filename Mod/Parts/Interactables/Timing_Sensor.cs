@@ -8,7 +8,7 @@ namespace CombustionMotors.Parts.Interactables;
 
 class Timing_Sensor : Part
 {
-    public Timing_Sensor() : base("CombustionMotors/assets/combustion_motors", "timing_sensor", 56185557270, "Crankshaft Sensor", "Electronics", 0.1f)
+    public Timing_Sensor() : base("CombustionMotors/assets/combustion_motors", "timing_sensor", 56185557270, "Crankshaft Sensor", "Electronics", 0.1f, true)
     {
         AddAttachmentPoint(
             "Fixed",

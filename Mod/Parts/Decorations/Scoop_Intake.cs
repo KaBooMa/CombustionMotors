@@ -7,7 +7,7 @@ namespace CombustionMotors.Parts.Decorations;
 
 class Scoop_Intake : Part
 {
-    public Scoop_Intake() : base("CombustionMotors/assets/combustion_motors", "scoop_intake", 7154292355, "Scoop Intake", "Props", 15f)
+    public Scoop_Intake() : base("CombustionMotors/assets/combustion_motors", "scoop_intake", 7154292355, "Scoop Intake", "Props", 15f, true)
     {
         AddAttachmentPoint(
             "Fixed",

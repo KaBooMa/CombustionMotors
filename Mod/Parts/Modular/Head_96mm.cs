@@ -10,7 +10,7 @@ namespace CombustionMotors.Parts.Modular;
 
 class Head_96mm : Part
 {
-    public Head_96mm() : base("CombustionMotors/assets/combustion_motors", "96mm_head", 264428568129133, "Cylinder Head", "Props", 0.8f)
+    public Head_96mm() : base("CombustionMotors/assets/combustion_motors", "96mm_head", 264428568129133, "Cylinder Head", "Props", 0.8f, true)
     {
         AddAttachmentPoint(
             "Cylinder",
