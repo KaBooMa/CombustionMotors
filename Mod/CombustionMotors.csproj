@@ -17,6 +17,7 @@
   <ItemGroup>
     <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+    <PackageReference Include="Samboy063.Cpp2IL.Core" Version="2022.1.0-development.866" />
     <Reference Include="GearLib">
       <HintPath>lib\GearLib.dll</HintPath>
     </Reference>

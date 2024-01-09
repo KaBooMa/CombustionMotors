@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using CombustionMotors.Behaviours.Bases;
+using CombustionMotors.Utility;
 using GearLib.Behaviours;
 using GearLib.Behaviours.Fields;
 using SmashHammer.GearBlocks.Construction;
@@ -11,6 +13,40 @@ namespace CombustionMotors.Behaviours.Interactables;
 
 public class ECUBehaviour : BehaviourBase
 {
+    #region Engine banks - unity caching
+
+    private class EngineComponents {
+
+        public EngineComponents(BlockTag block)
+        {
+            BlockUtility = new BlockUtility(block.gameObject);
+            Piston = BlockUtility.Piston.GetComponent<PistonBehaviourBase>();
+            Head = BlockUtility.Head.GetComponent<HeadBehaviour>();
+            Crank = block.GetAttachment("Crankshaft").Cast<RotaryBearingAttachment>();
+            PistonBody = Piston.transform.parent.GetComponent<Rigidbody>();
+            HeadBody = BlockUtility.Head.parentComposite.GetComponent<Rigidbody>();
+        }
+
+        public BlockUtility BlockUtility { get; }
+        public PistonBehaviourBase Piston { get; }
+        public HeadBehaviour Head { get; }
+        public RotaryBearingAttachment Crank { get; }
+        public Rigidbody PistonBody { get; set; }
+        public Rigidbody HeadBody { get; set; }
+    }
+
+    private Dictionary<BlockTag, EngineComponents> engineBanks = [];
+
+    private Construction ParentConstruction;
+
+    #endregion
+
+    private bool redlined = false;
+    private bool IsFrozen = false;
+    private static float atmospheric_pressure = 14.7f;
+
+    #region Behaviour Configuration
+
     [IntField(label = "Idle RPM Target", tooltip_text = "Target RPMs for idle (May not reach all the time)", initial_value = 400, minimum_value = 0, maximum_value = 1200)]
     public int idle_rpms;
 
@@ -35,42 +71,56 @@ public class ECUBehaviour : BehaviourBase
     [InputField(label = "Direct Throttle", tooltip_text = "Throttle input via keyboard")]
     public InputAction throttle_keyboard;
 
-    bool redlined = false;
-    bool is_frozen = false;
+    #endregion
 
-    List<BlockBehaviour> attached_blocks = new List<BlockBehaviour>();
-
-    static float atmospheric_pressure = 14.7f;
+    void Start() {
+        ParentConstruction = GetComponent<PartDescriptor>().ParentConstruction;
+    }
 
     void FixedUpdate()
     {
         // Don't do calculations if construction is frozen currently
-        if (GetComponent<PartDescriptor>().ParentConstruction.IsFrozen)
+        if (ParentConstruction.IsFrozen)
         {
-            is_frozen = true;
+            IsFrozen = true;
             return;
         }
-        else if (is_frozen)
+        
+        // Setup engine once unfrozen
+        if (IsFrozen)
         {
-            // Setup our attached blocks for referencing later
-            attached_blocks.Clear();
-            foreach (GameObject block in GetLinkedParts("CrankshaftSensors"))
-                attached_blocks.Add(block.GetComponent<BlockBehaviour>());
 
-            is_frozen = false;
+            var banks = GetLinkedParts("CrankshaftSensors")
+                .Select(s => s.GetComponent<BlockTag>());
+
+            foreach (var bank in banks)
+            {
+                if (engineBanks.ContainsKey(bank)) {
+                    // refresh bank (since engine may have been changed)
+                    engineBanks[bank] = new EngineComponents(bank);
+                    continue;
+                }
+                // add bank
+                engineBanks.Add(bank, new EngineComponents(bank));
+            }
+
+            foreach (var (bank, _) in engineBanks.Reverse()) {
+                if (!banks.Contains(bank)) engineBanks.Remove(bank);
+            }
+
+            IsFrozen = false;
         }
 
         // If we have no blocks attached, don't do any compute
 
-        foreach (BlockBehaviour block in attached_blocks)
+        foreach (var (_, bank) in engineBanks)
         {
             // Ignore not fully built engines
-            if (!block.is_built) continue;
+            if (!bank.BlockUtility.IsBuilt) continue;
 
-            PistonBehaviourBase piston = block.piston.GetComponent<PistonBehaviourBase>();
-            HeadBehaviour head = block.head.GetComponent<HeadBehaviour>();
-            //CrankshaftBehaviourBase crankshaft = block.crankshaft.GetComponent<CrankshaftBehaviourBase>();
-            RotaryBearingAttachment crankshaft_bearing = block.GetAttachment("Crankshaft").Cast<RotaryBearingAttachment>();
+            var piston = bank.Piston;
+            var head = bank.Head;
+            var crankshaftBearing = bank.Crank;
 
             // Piston info
             float bore_size = piston.bore_size;
@@ -79,8 +129,8 @@ public class ECUBehaviour : BehaviourBase
             bool has_fired = head.has_fired;
 
             // Crank info
-            float crank_angle = crankshaft_bearing.CurrentAngle + crankshaft_bearing.CurrentAngle < 0 ? crankshaft_bearing.CurrentAngle + 360 : crankshaft_bearing.CurrentAngle;
-            float current_rpms = Math.Abs(crankshaft_bearing.CurrentAngularSpeed) * 9.935f;
+            float crank_angle = crankshaftBearing.CurrentAngle + crankshaftBearing.CurrentAngle < 0 ? crankshaftBearing.CurrentAngle + 360 : crankshaftBearing.CurrentAngle;
+            float current_rpms = Math.Abs(crankshaftBearing.CurrentAngularSpeed) * 9.935f;
 
             // Power calculations
             // float displacement = 0.785f * (float)Math.Pow(bore_size, 2) * crankshaft.stroke_length;
@@ -127,13 +177,11 @@ public class ECUBehaviour : BehaviourBase
             // Firing piston as needed when within the start/stop angle
             if (head.stroke == 1 && !has_fired && !redlined)
             {
-                Rigidbody piston_rigid_body = piston.transform.parent.GetComponent<Rigidbody>();
-                piston_rigid_body.AddRelativeForce(-Vector3.up * applicable_force);
+                bank.PistonBody.AddRelativeForce(-Vector3.up * applicable_force);
 
                 if (opposing_force > 0)
                 {
-                    Rigidbody head_rigid_body = block.head.parentComposite.GetComponent<Rigidbody>();
-                    head_rigid_body.AddRelativeForce(Vector3.up * applicable_force * opposing_force);
+                    bank.HeadBody.AddRelativeForce(Vector3.up * applicable_force * opposing_force);
                 }
 
                 head.has_fired = true;

@@ -43,6 +43,6 @@ class Block_Medium : Part
         AddLinkPoint("ECU", "Electronics", Vector3.zero, can_send: false);
         AddBehaviour<DisableCollisonBehaviour>();
         AddBehaviour<CrankCase97Behaviour>();
-        AddBehaviour<BlockBehaviour>();
+        AddBehaviour<BlockTag>();
     }
 }
