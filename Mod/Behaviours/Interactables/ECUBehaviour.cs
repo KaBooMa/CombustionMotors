@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using CombustionMotors.Behaviours.Bases;
+using CombustionMotors.Behaviours.Blocks;
+using CombustionMotors.Behaviours.Heads;
 using GearLib.Behaviours;
 using GearLib.Behaviours.Fields;
 using SmashHammer.GearBlocks.Construction;
@@ -26,7 +28,7 @@ public class ECUBehaviour : BehaviourBase
     //[IntField(label = "Fuel Efficiency", tooltip_text = "How effectively the fuel burns in the cylinder (20-35% gasoline, 40-50% diesel)", initial_value = 25, minimum_value = 20, maximum_value = 100)]
     int fuel_efficiency = 20;
 
-    [FloatField(label = "Compression Ratio", tooltip_text = "Compression of the engine (Typically 8-12 for gasoline; 14-23 for diesel)", initial_value = 10, minimum_value = 8, maximum_value = 12)]
+    [FloatField(label = "Compression Ratio", tooltip_text = "Compression of the engine (Typically 8-12 for gasoline; 14-23 for diesel)", initial_value = 8, minimum_value = 1, maximum_value = 18)]
     public float compression_ratio;
 
     [JoystickField(label = "Linear Throttle", tooltip_text = "Throttle input via controller")]
@@ -38,7 +40,7 @@ public class ECUBehaviour : BehaviourBase
     bool redlined = false;
     bool is_frozen = false;
 
-    List<BlockBehaviour> attached_blocks = new List<BlockBehaviour>();
+    List<BlockBehaviourBase> attached_blocks = new List<BlockBehaviourBase>();
 
     static float atmospheric_pressure = 14.7f;
 
@@ -55,20 +57,20 @@ public class ECUBehaviour : BehaviourBase
             // Setup our attached blocks for referencing later
             attached_blocks.Clear();
             foreach (GameObject block in GetLinkedParts("CrankshaftSensors"))
-                attached_blocks.Add(block.GetComponent<BlockBehaviour>());
+                attached_blocks.Add(block.GetComponent<BlockBehaviourBase>());
 
             is_frozen = false;
         }
 
         // If we have no blocks attached, don't do any compute
 
-        foreach (BlockBehaviour block in attached_blocks)
+        foreach (BlockBehaviourBase block in attached_blocks)
         {
             // Ignore not fully built engines
             if (!block.is_built) continue;
 
             PistonBehaviourBase piston = block.piston.GetComponent<PistonBehaviourBase>();
-            HeadBehaviour head = block.head.GetComponent<HeadBehaviour>();
+            HeadBehaviourBase head = block.head.GetComponent<HeadBehaviourBase>();
             //CrankshaftBehaviourBase crankshaft = block.crankshaft.GetComponent<CrankshaftBehaviourBase>();
             RotaryBearingAttachment crankshaft_bearing = block.GetAttachment("Crankshaft").Cast<RotaryBearingAttachment>();
 
