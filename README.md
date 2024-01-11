@@ -10,4 +10,5 @@ Simply download the latest release and extract the CombustionMotors folder into 
 
 ## Credits
 All models are maintained by SilverThorn (Thank you Silver ❤️!)\
-Big thank you to Thebutheads, Pyro and MATT in the Discord for help getting the calculations dialed in for realism!!
+Big thank you to Thebutheads, Pyro and MATT in the Discord for help getting the calculations dialed in for realism!!\
+Lots of love to Unslinga for assistance with optimizing behaviours for better performance!!
