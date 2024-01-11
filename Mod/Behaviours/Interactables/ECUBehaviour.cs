@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using CombustionMotors.Behaviours.Bases;
 using CombustionMotors.Behaviours.Blocks;
@@ -40,7 +41,7 @@ public class ECUBehaviour : BehaviourBase
     bool redlined = false;
     bool is_frozen = false;
 
-    List<BlockBehaviourBase> attached_blocks = new List<BlockBehaviourBase>();
+    List<EngineComponents> attached_blocks = new List<EngineComponents>();
 
     static float atmospheric_pressure = 14.7f;
 
@@ -57,22 +58,24 @@ public class ECUBehaviour : BehaviourBase
             // Setup our attached blocks for referencing later
             attached_blocks.Clear();
             foreach (GameObject block in GetLinkedParts("CrankshaftSensors"))
-                attached_blocks.Add(block.GetComponent<BlockBehaviourBase>());
+            {
+                attached_blocks.Add(new EngineComponents(block));
+            }
 
             is_frozen = false;
         }
 
         // If we have no blocks attached, don't do any compute
 
-        foreach (BlockBehaviourBase block in attached_blocks)
+        foreach (EngineComponents block in attached_blocks)
         {
             // Ignore not fully built engines
-            if (!block.is_built) continue;
+            if (!block.IsBuilt) continue;
 
-            PistonBehaviourBase piston = block.piston.GetComponent<PistonBehaviourBase>();
-            HeadBehaviourBase head = block.head.GetComponent<HeadBehaviourBase>();
+            PistonBehaviourBase piston = block.PistonBehaviour;
+            HeadBehaviourBase head = block.HeadBehaviour;
             //CrankshaftBehaviourBase crankshaft = block.crankshaft.GetComponent<CrankshaftBehaviourBase>();
-            RotaryBearingAttachment crankshaft_bearing = block.GetAttachment("Crankshaft").Cast<RotaryBearingAttachment>();
+            RotaryBearingAttachment crankshaft_bearing = block.CrankshaftBearing;
 
             // Piston info
             float bore_size = piston.bore_size;
@@ -126,16 +129,15 @@ public class ECUBehaviour : BehaviourBase
                 if (head.stroke == 3 || head.stroke == 1) head.stroke++;
             }
 
+
             // Firing piston as needed when within the start/stop angle
             if (head.stroke == 1 && !has_fired && !redlined)
             {
-                Rigidbody piston_rigid_body = piston.transform.parent.GetComponent<Rigidbody>();
-                piston_rigid_body.AddRelativeForce(-Vector3.up * applicable_force);
+                block.PistonRigidbody.AddRelativeForce(-Vector3.up * applicable_force);
 
                 if (opposing_force > 0)
                 {
-                    Rigidbody head_rigid_body = block.head.parentComposite.GetComponent<Rigidbody>();
-                    head_rigid_body.AddRelativeForce(Vector3.up * applicable_force * opposing_force);
+                    block.HeadRigidbody.AddRelativeForce(Vector3.up * applicable_force * opposing_force);
                 }
 
                 head.has_fired = true;
