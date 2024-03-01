@@ -14,10 +14,10 @@ namespace CombustionMotors.Behaviours.Interactables;
 
 public class ECUBehaviour : BehaviourBase
 {
-    [IntField(label = "Idle RPM Target", tooltip_text = "Target RPMs for idle (May not reach all the time)", initial_value = 400, minimum_value = 0, maximum_value = 1200)]
+    [IntField(label = "Idle RPM Target", tooltip_text = "Target RPMs for idle (May not reach all the time)", initial_value = 400, minimum_value = 0, maximum_value = 2000)]
     public int idle_rpms;
 
-    [IntField(label = "Redline", tooltip_text = "Target RPMs to cut fuel", initial_value = 2000, minimum_value = 0, maximum_value = 10000)]
+    [IntField(label = "Redline", tooltip_text = "Target RPMs to cut fuel", initial_value = 2000, minimum_value = 0, maximum_value = 30000)]
     public int max_rpms;
 
     [IntField(label = "(ADVANCED) Redline Buffer", tooltip_text = "How much RPM must drop after redlining to supply fuel again", initial_value = 100, minimum_value = 0, maximum_value = 1000)]
@@ -26,10 +26,10 @@ public class ECUBehaviour : BehaviourBase
     [FloatField(label = "(EXPERIMENTAL) Opposing Force", tooltip_text = "Supplies an inversed force away from piston on fixed attachment", initial_value = 1, minimum_value = 0, maximum_value = 1)]
     public float opposing_force;
 
-    //[IntField(label = "Fuel Efficiency", tooltip_text = "How effectively the fuel burns in the cylinder (20-35% gasoline, 40-50% diesel)", initial_value = 25, minimum_value = 20, maximum_value = 100)]
-    int fuel_efficiency = 20;
+    [IntField(label = "Fuel Efficiency", tooltip_text = "How effectively the fuel burns in the cylinder (20-35% gasoline, 40-50% diesel)", initial_value = 20, minimum_value = 0, maximum_value = 100)]
+    public int fuel_efficiency;
 
-    [FloatField(label = "Compression Ratio", tooltip_text = "Compression of the engine (Typically 8-12 for gasoline; 14-23 for diesel)", initial_value = 8, minimum_value = 1, maximum_value = 18)]
+    [FloatField(label = "Compression Ratio", tooltip_text = "Compression of the engine (Typically 8-12 for gasoline; 14-23 for diesel)", initial_value = 8, minimum_value = 0, maximum_value = 25)]
     public float compression_ratio;
 
     [JoystickField(label = "Linear Throttle", tooltip_text = "Throttle input via controller")]
@@ -37,6 +37,9 @@ public class ECUBehaviour : BehaviourBase
 
     [InputField(label = "Direct Throttle", tooltip_text = "Throttle input via keyboard")]
     public InputAction throttle_keyboard;
+
+    [BooleanField(label = "Two Stroke?", tooltip_text = "Default behavior is 4 stroke. Toggle this for a 2 stroke engine.")]
+    public bool two_stroke;
 
     bool redlined = false;
     bool is_frozen = false;
@@ -118,7 +121,7 @@ public class ECUBehaviour : BehaviourBase
             {
                 if (head.stroke == 4 || head.stroke == 2) head.stroke++;
 
-                if (head.stroke == 5) 
+                if ((!two_stroke && head.stroke >= 5) || (two_stroke && head.stroke >= 3))
                 {
                     head.stroke = 1;
                     head.has_fired = false;
