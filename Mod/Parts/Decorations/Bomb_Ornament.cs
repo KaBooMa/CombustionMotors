@@ -1,4 +1,4 @@
-using GearLib.Parts;
+using GearLib.API;
 using SmashHammer.GearBlocks.Construction;
 using UnityEngine;
 using static SmashHammer.GearBlocks.Construction.PartPointGrid;

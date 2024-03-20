@@ -1,18 +1,17 @@
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using CombustionMotors.Behaviours.Bases;
 using CombustionMotors.Behaviours.Blocks;
 using CombustionMotors.Behaviours.Heads;
-using GearLib.Behaviours;
-using GearLib.Behaviours.Fields;
+using GearLib.API.Fields;
 using SmashHammer.GearBlocks.Construction;
 using SmashHammer.Input;
 using UnityEngine;
+using Behaviour = GearLib.API.Behaviour;
 
 namespace CombustionMotors.Behaviours.Interactables;
 
-public class ECUBehaviour : BehaviourBase
+public class ECUBehaviour : Behaviour
 {
     [IntField(label = "Idle RPM Target", tooltip_text = "Target RPMs for idle (May not reach all the time)", initial_value = 400, minimum_value = 0, maximum_value = 2000)]
     public int idle_rpms;
@@ -45,6 +44,8 @@ public class ECUBehaviour : BehaviourBase
     bool is_frozen = false;
 
     List<EngineComponents> attached_blocks = new List<EngineComponents>();
+    public AudioClip engine_sound;
+    public AudioSource engine_audio_source;
 
     static float atmospheric_pressure = 14.7f;
 
@@ -65,6 +66,11 @@ public class ECUBehaviour : BehaviourBase
                 attached_blocks.Add(new EngineComponents(block));
             }
 
+            // Testing audio clip
+            engine_sound = Resources.Load<AudioClip>("CombustionMotors/assets/combustion_motors/engine_4.ogg");
+            engine_audio_source = transform.gameObject.AddComponent<AudioSource>();
+            engine_audio_source.clip = engine_sound;
+
             is_frozen = false;
         }
 
@@ -75,9 +81,9 @@ public class ECUBehaviour : BehaviourBase
             // Ignore not fully built engines
             if (!block.IsBuilt) continue;
 
-            PistonBehaviourBase piston = block.PistonBehaviour;
-            HeadBehaviourBase head = block.HeadBehaviour;
-            //CrankshaftBehaviourBase crankshaft = block.crankshaft.GetComponent<CrankshaftBehaviourBase>();
+            PistonBehaviour piston = block.PistonBehaviour;
+            HeadBehaviour head = block.HeadBehaviour;
+            //CrankshaftBehaviour crankshaft = block.crankshaft.GetComponent<CrankshaftBehaviour>();
             RotaryBearingAttachment crankshaft_bearing = block.CrankshaftBearing;
 
             // Piston info
@@ -136,6 +142,8 @@ public class ECUBehaviour : BehaviourBase
             // Firing piston as needed when within the start/stop angle
             if (head.stroke == 1 && !has_fired && !redlined)
             {
+                engine_audio_source.PlayOneShot(engine_sound);
+
                 block.PistonRigidbody.AddRelativeForce(-Vector3.up * applicable_force);
 
                 if (opposing_force > 0)

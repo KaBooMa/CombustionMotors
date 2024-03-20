@@ -1,9 +1,9 @@
-using GearLib.Behaviours;
-using GearLib.Behaviours.Fields;
+using GearLib.API;
+using GearLib.API.Fields;
 
 namespace CombustionMotors.Behaviours.Heads;
 
-public class HeadBehaviourBase : BehaviourBase
+public class HeadBehaviour : Behaviour
 {
     public bool has_fired = false;
     public int stroke = 1;

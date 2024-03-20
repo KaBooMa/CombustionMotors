@@ -14,9 +14,9 @@ public class EngineComponents
     public PartDescriptor CylinderDescriptor { get { return cylinderDescriptor; } }
     public PartDescriptor HeadDescriptor { get { return headDescriptor; } }
 
-    public HeadBehaviourBase HeadBehaviour { get { return headBehaviour; } }
-    public PistonBehaviourBase PistonBehaviour { get { return pistonBehaviour; } }
-    public BlockBehaviourBase BlockBehaviour { get { return blockBehaviour; } }
+    public HeadBehaviour HeadBehaviour { get { return headBehaviour; } }
+    public PistonBehaviour PistonBehaviour { get { return pistonBehaviour; } }
+    public BlockBehaviour BlockBehaviour { get { return blockBehaviour; } }
     public RotaryBearingAttachment CrankshaftBearing { get { return crankshaftBearing; } }
     public Rigidbody PistonRigidbody { get { return pistonRigidbody; } }
     public Rigidbody HeadRigidbody { get { return headRigidbody; } }
@@ -34,9 +34,9 @@ public class EngineComponents
     private readonly PartDescriptor cylinderDescriptor;
     private readonly PartDescriptor headDescriptor;
 
-    private readonly HeadBehaviourBase headBehaviour;
-    private readonly PistonBehaviourBase pistonBehaviour;
-    private readonly BlockBehaviourBase blockBehaviour;
+    private readonly HeadBehaviour headBehaviour;
+    private readonly PistonBehaviour pistonBehaviour;
+    private readonly BlockBehaviour blockBehaviour;
 
     private readonly RotaryBearingAttachment crankshaftBearing;
 
@@ -57,9 +57,9 @@ public class EngineComponents
         headDescriptor = FindPartOnAttachment("Head", cylinderDescriptor);
 
         // Grab Behaviours
-        headBehaviour = headDescriptor.GetComponent<HeadBehaviourBase>();
-        pistonBehaviour = pistonDescriptor.GetComponent<PistonBehaviourBase>();
-        blockBehaviour = blockDescriptor.GetComponent<BlockBehaviourBase>();
+        headBehaviour = headDescriptor.GetComponent<HeadBehaviour>();
+        pistonBehaviour = pistonDescriptor.GetComponent<PistonBehaviour>();
+        blockBehaviour = blockDescriptor.GetComponent<BlockBehaviour>();
 
         // Grab Bearing
         crankshaftBearing = blockBehaviour.GetAttachment("Crankshaft").Cast<RotaryBearingAttachment>();

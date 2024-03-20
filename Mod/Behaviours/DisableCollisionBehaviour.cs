@@ -1,10 +1,10 @@
-using GearLib.Behaviours;
 using SmashHammer.GearBlocks.Construction;
 using UnityEngine;
+using Behaviour = GearLib.API.Behaviour;
 
 namespace CombustionMotors.Behaviours;
 
-class DisableCollisonBehaviour : BehaviourBase
+class DisableCollisonBehaviour : Behaviour
 {
     bool is_frozen = false;
 

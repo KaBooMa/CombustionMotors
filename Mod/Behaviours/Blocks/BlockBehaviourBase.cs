@@ -1,6 +1,5 @@
-using GearLib.Behaviours;
-using SmashHammer.GearBlocks.Construction;
+using GearLib.API;
 
 namespace CombustionMotors.Behaviours.Blocks;
 
-public class BlockBehaviourBase : BehaviourBase {}
+public class BlockBehaviour : Behaviour {}

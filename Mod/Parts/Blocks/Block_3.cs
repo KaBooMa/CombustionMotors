@@ -1,6 +1,6 @@
 using CombustionMotors.Behaviours;
 using CombustionMotors.Behaviours.Blocks;
-using GearLib.Parts;
+using GearLib.API;
 using SmashHammer.GearBlocks.Construction;
 using UnityEngine;
 using static SmashHammer.GearBlocks.Construction.PartPointGrid;
@@ -42,6 +42,6 @@ class Block_3 : Part
         
         AddLinkPoint("ECU", "Electronics", Vector3.zero, can_send: false);
         AddBehaviour<DisableCollisonBehaviour>();
-        AddBehaviour<BlockBehaviourBase>();
+        AddBehaviour<BlockBehaviour>();
     }
 }

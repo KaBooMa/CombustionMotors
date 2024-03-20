@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3296462507
+CRC: 1294095785
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f0a2914ea11bcd96996c914df4733373
+    Hash: 921635671d96d28a6109e17e9bb2ddc2
   TypeTreeHash:
     serializedVersion: 2
-    Hash: bb3f49cbf9ab82d37cd7fae230ed5d11
+    Hash: 96ff23d70f5d63979655dfb46ed53280
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -17,6 +17,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 23
   Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
 - Class: 33
   Script: {instanceID: 0}
 - Class: 43
@@ -24,6 +26,8 @@ ClassTypes:
 - Class: 48
   Script: {instanceID: 0}
 - Class: 64
+  Script: {instanceID: 0}
+- Class: 83
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
@@ -45,12 +49,14 @@ Assets:
 - Assets/Parts/Heads/cylinder_head_3.fbx
 - Assets/Parts/Crankshafts/220mm_Crank.fbx
 - Assets/Parts/Blocks/Crank_4.fbx
-- Assets/Parts/Interactables/throttle_lever.fbx
+- Assets/Parts/Sounds/engine_4.ogg
 - Assets/Parts/Conrods/180mm_con_rod.fbx
+- Assets/Parts/Interactables/throttle_lever.fbx
 - Assets/Parts/Pistons/100mm_piston.fbx
 - Assets/Parts/Interactables/throttle_body.fbx
 - Assets/Parts/Crankshafts/50mm_crank.fbx
 - Assets/Parts/Conrods/160mm_con_rod.fbx
+- Assets/Parts/MyMat.mat
 - Assets/Parts/Conrods/140mm_con_rod.fbx
 - Assets/Parts/Pistons/160mm_piston.fbx
 - Assets/Parts/Crankshafts/130mm_crank.fbx

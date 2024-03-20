@@ -1,6 +1,6 @@
 using CombustionMotors.Behaviours;
 using CombustionMotors.Behaviours.Heads;
-using GearLib.Parts;
+using GearLib.API;
 using SmashHammer.GearBlocks.Construction;
 using UnityEngine;
 using static SmashHammer.GearBlocks.Construction.PartPointGrid;
@@ -22,6 +22,6 @@ class Head_3 : Part
         );
 
         AddBehaviour<DisableCollisonBehaviour>();
-        AddBehaviour<HeadBehaviourBase>();
+        AddBehaviour<HeadBehaviour>();
     }
 }
